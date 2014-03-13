@@ -12,7 +12,7 @@ For users of OSX only who have installed PHP via [Homebrew] and for PHP version 
 
 Your Apache config must be setup using the same paths as below.
 ```sh
-LoadModule php5_module /usr/local/opt/php53/libexec/apache2/libphp5.so
+#LoadModule php5_module /usr/local/opt/php53/libexec/apache2/libphp5.so
 #LoadModule php5_module /usr/local/opt/php54/libexec/apache2/libphp5.so
 #LoadModule php5_module /usr/local/opt/php55/libexec/apache2/libphp5.so
 ```
