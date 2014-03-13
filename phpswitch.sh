@@ -1,4 +1,7 @@
 #!/bin/bash
+# Creator: Phil Cook
+# Email: phil@phil-cook.com
+# Twitter: @p_cook
 php_array=("php53" "php54" "php55")
 php_version="php$1"
 apache_conf_path="/etc/apache2/httpd.conf"
