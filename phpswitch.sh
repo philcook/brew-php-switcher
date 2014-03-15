@@ -5,7 +5,8 @@
 php_array=("php53" "php54" "php55")
 php_version="php$1"
 apache_conf_path="/etc/apache2/httpd.conf"
-php_opt_path="\/usr\/local\/opt\/"
+brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
+php_opt_path="$brew_prefix\/opt\/"
 php_lib_path="\/libexec\/apache2\/libphp5.so"
 php_mod_path="$php_opt_path$php_version$php_lib_path"
 if [[ " ${php_array[*]} " == *"$php_version"* ]]
