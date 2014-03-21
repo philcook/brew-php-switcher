@@ -1,7 +1,7 @@
 Brew PHP Switcher
 =========
 
-Brew PHP switcher is a simple script to switch your Apache and CLI configs quickly between versions major versions of PHP.
+Brew PHP switcher is a simple script to switch your Apache and CLI configs quickly between major versions of PHP.
 
 If you support multiple products/projects that are built using either brand new or old legacy PHP functionality and you find it a pain to change config files continually this will make the whole process last seconds not minutes.
 
