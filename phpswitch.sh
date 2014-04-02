@@ -11,6 +11,13 @@ php_opt_path="$brew_prefix\/opt\/"
 php_lib_path="\/libexec\/apache2\/libphp5.so"
 php_mod_path="$php_opt_path$php_version$php_lib_path"
 
+# Has the user submitted a version required
+if [[ -z "$1" ]]
+then
+	echo "Please set which version you want to switch to. E.g. brew-php-switcher 53"
+	exit
+fi
+
 # What versions of php are installed via brew
 for i in ${php_array[@]}
 	do
