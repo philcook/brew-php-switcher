@@ -10,8 +10,6 @@ brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 php_opt_path="$brew_prefix\/opt\/"
 php_lib_path="\/libexec\/apache2\/libphp5.so"
 php_mod_path="$php_opt_path$php_version$php_lib_path"
-red='\e[0;31m'
-NC='\e[0m'
 
 # What versions of php are installed via brew
 for i in ${php_array[@]}
