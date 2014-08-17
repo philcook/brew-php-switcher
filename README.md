@@ -20,25 +20,19 @@ Your Apache config must be setup using the same paths as below. Replace homebrew
 Version
 ----
 
-1.0
+1.3
 
 Installation
 --------------
-Where **[version]** exists, please replace with syntax of **53**,**54** or **55** depending on which version is required.
-
 ```sh
-git clone git@github.com:philcook/php-switcher.git php-switcher
-cd php-switcher
-sh phpswitch.sh [version]
+brew install brew-php-switcher
 ```
 
-You can also add aliases in your shell as well for even quicker switching, add this to your **.bash_profile** or favourite shell config.
-
+Where **55** exists, please replace with syntax of **53**,**54** or **55** depending on which version is required.
 ```sh
-alias php53="sh /path/to/phpswitch.sh 53"
-alias php54="sh /path/to/phpswitch.sh 54"
-alias php55="sh /path/to/phpswitch.sh 55"
+brew-php-switcher 55
 ```
+
 
 License
 ----
