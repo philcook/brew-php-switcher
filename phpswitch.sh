@@ -19,7 +19,7 @@ if [[ -z "$1" ]]
 then
 	echo "usage: brew-php-switcher version [-s]"; echo;
 	echo "    version    one of:" ${php_array[@]};
-	echo "    -a         skip change of mod_php on apache"; echo;
+	echo "    -s         skip change of mod_php on apache"; echo;
 	exit
 fi
 
