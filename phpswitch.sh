@@ -4,6 +4,7 @@
 # Twitter: @p_cook
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
+brew_array=("53","54","55","56")
 php_array=("php53" "php54" "php55" "php56")
 php_installed_array=()
 php_version="php$1"
@@ -18,7 +19,7 @@ apache_php_mod_path="$php_opt_path$php_version$apache_php_lib_path"
 if [[ -z "$1" ]]
 then
 	echo "usage: brew-php-switcher version [-s]"; echo;
-	echo "    version    one of:" ${php_array[@]};
+	echo "    version    one of:" ${brew_array[@]};
 	echo "    -s         skip change of mod_php on apache"; echo;
 	exit
 fi
@@ -78,5 +79,5 @@ then
 		echo "Sorry, but $php_version is not installed via brew. Install by running: brew install $php_version"
 	fi
 else
-	echo "Unknown version of PHP. PHP Switcher can only handle arguments of:" ${php_array[@]}
+	echo "Unknown version of PHP. PHP Switcher can only handle arguments of:" ${brew_array[@]}
 fi
