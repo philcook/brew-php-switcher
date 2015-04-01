@@ -34,6 +34,10 @@ Where **56** exists, please replace with syntax of **53**, **54**, **55** or **5
 brew-php-switcher 56
 ```
 
+Options
+--------------
+
+-s Skips apache config switch
 
 License
 ----
