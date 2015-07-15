@@ -4,17 +4,23 @@
 # Twitter: @p_cook
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
-brew_array=("53","54","55","56")
-php_array=("php53" "php54" "php55" "php56")
+brew_array=("53","54","55","56","70")
+php_array=("php53" "php54" "php55" "php56" "php70")
 php_installed_array=()
 php_version="php$1"
 php_opt_path="$brew_prefix\/opt\/"
 
 apache_change=1
 apache_conf_path="/etc/apache2/httpd.conf"
-apache_php_lib_path="\/libexec\/apache2\/libphp5.so"
+php_family=5
+if [[ $1 == 7* ]]
+then
+	php_family=7
+fi
+apache_php_module_binary="libphp$php_family.so"
+apache_config_php_module_name="php${php_family}_module"
+apache_php_lib_path="\/libexec\/apache2\/$apache_php_module_binary"
 apache_php_mod_path="$php_opt_path$php_version$apache_php_lib_path"
-
 # Has the user submitted a version required
 if [[ -z "$1" ]]
 then
@@ -68,9 +74,14 @@ then
 			echo "Switching your apache conf"
 			for j in ${php_installed_array[@]}
 			do
-				sudo sed -i.bak "s/^LoadModule[ \t]php5_module[ \t]$php_opt_path$j$apache_php_lib_path/\#LoadModule php5_module $php_opt_path$j$apache_php_lib_path/g" $apache_conf_path
+				if [[ $php_family -eq 7 ]]
+				then
+					sudo sed -i.bak "s/^LoadModule[ \t]php7_module[ \t]$php_opt_path$j$apache_php_lib_path/\#LoadModule php7_module $php_opt_path$j$apache_php_lib_path/g" $apache_conf_path
+				else
+					sudo sed -i.bak "s/^LoadModule[ \t]php5_module[ \t]$php_opt_path$j$apache_php_lib_path/\#LoadModule php5_module $php_opt_path$j$apache_php_lib_path/g" $apache_conf_path
+				fi
 			done
-			sudo sed -i.bak "s/^\#LoadModule[ \t]php5_module[ \t]$apache_php_mod_path/LoadModule php5_module $apache_php_mod_path/g" $apache_conf_path
+			sudo sed -i.bak "s/^\#LoadModule[ \t]$apache_config_php_module_name[ \t]$apache_php_mod_path/LoadModule $apache_config_php_module_name $apache_php_mod_path/g" $apache_conf_path
 			echo "Restarting apache"
 			sudo apachectl restart
 		fi
