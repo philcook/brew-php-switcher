@@ -50,5 +50,5 @@ License
 
 MIT
 
-[Homebrew]:http://http://brew.sh/
+[Homebrew]:http://brew.sh/
 [@p_cook]:http://twitter.com/p_cook
