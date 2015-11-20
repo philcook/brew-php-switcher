@@ -10,6 +10,8 @@ php_installed_array=()
 php_version="php$1"
 php_opt_path="$brew_prefix\/opt\/"
 
+homebrew_apache_array=("httpd22" "httpd24")
+
 php5_module="php5_module"
 apache_php5_lib_path="\/libexec\/apache2\/libphp5.so"
 php7_module="php7_module"
@@ -59,6 +61,18 @@ for i in ${php_array[*]}
 			php_installed_array+=("$i")
 		fi
 done
+
+# if homebrew-apache is installed via brew, use it (instead of OSX built in Apache)
+for i in ${homebrew_apache_array[*]}
+	do
+		if [[ -n "$(brew ls --versions "$i")" ]]
+		then
+			# use last installed version listed...
+			apache_dot_version="${i:5:1}.${i:(-1)}" # e.g. "2.4"
+			apache_conf_path="$(brew --prefix)/etc/apache2/${apache_dot_version}/httpd.conf"
+		fi
+done
+
 
 # Check that the requested version is supported
 if [[ " ${php_array[*]} " == *"$php_version"* ]]
