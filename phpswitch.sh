@@ -24,7 +24,7 @@ if [ $php_version = "php70" ]; then
 fi
 
 apache_change=1
-apache_conf_path="/etc/apache2/httpd.conf"
+apache_conf_path=$(apachectl -V | grep SERVER_CONFIG_FILE | cut -d '"' -f 2)
 apache_php_mod_path="$php_opt_path$php_version$apache_php_lib_path"
 
 # Has the user submitted a version required
