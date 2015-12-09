@@ -68,15 +68,9 @@ then
 	then
 		# Switch Shell
 		echo "Switching to $php_version"
-		echo "Switching your shell"
-		for i in ${php_installed_array[@]}
-		do
-			if [[ -n $(brew ls --versions $i) ]]
-			then
-				brew unlink $i
-			fi
-		done
-		brew link "$php_version"
+
+		# Unlink desired php version before re-linking it
+		brew unlink "$php_version"; brew link --overwrite "$php_version";
 
 		# Switch apache
 		if [[ $apache_change -eq 1 ]]; then
