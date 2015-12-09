@@ -105,7 +105,7 @@ $comment_apache_module_string\\
 			echo "Restarting apache"
 			sudo apachectl restart
 		fi
-		echo "All done!"
+		echo "All done! Verify linked version with \`php --version\`"
 	else
 		echo "Sorry, but $php_version is not installed via brew. Install by running: brew install $php_version"
 	fi
