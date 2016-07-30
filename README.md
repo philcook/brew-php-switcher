@@ -8,7 +8,7 @@ If you support multiple products/projects that are built using either brand new 
 Caveats
 -------
 
-For users of OSX only who have installed PHP via [Homebrew] and for PHP version 5.3, 5.4, 5.5, 5.6 and 7.0 beta only.
+For users of OSX only who have installed PHP via [Homebrew] and for PHP version 5.3, 5.4, 5.5, 5.6 and 7.0 only.
 
 Your Apache config must have native osx PHP module commented out.
 ```sh
@@ -50,5 +50,5 @@ License
 
 MIT
 
-[Homebrew]:http://http://brew.sh/
+[Homebrew]:http://brew.sh/
 [@p_cook]:http://twitter.com/p_cook
