@@ -1,16 +1,9 @@
 language: bash
-
-matrix:
-    include:
-        - os: osx
-            osx_image: beta-xcode6.2
-            language: generic
-        - os: osx
-            osx_image: xcode7
-            language: generic
-        - os: osx
-            osx_image: xcode7.3
-            language: generic
+os: osx
+osx_image: xcode7.3
 
 install:
   - ./.travis/install.sh
+
+script:
+  - ./.travis/test.sh
