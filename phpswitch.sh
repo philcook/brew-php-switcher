@@ -4,8 +4,8 @@
 # Twitter: @p_cook
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
-brew_array=("53","54","55","56","70")
-php_array=("php53" "php54" "php55" "php56" "php70")
+brew_array=("53","54","55","56","70","71")
+php_array=("php53" "php54" "php55" "php56" "php70" "php71")
 php_installed_array=()
 php_version="php$1"
 php_opt_path="$brew_prefix\/opt\/"
@@ -18,7 +18,7 @@ native_osx_php_apache_module="LoadModule php5_module libexec\/apache2\/libphp5.s
 
 php_module="$php5_module"
 apache_php_lib_path="$apache_php5_lib_path"
-if [ $php_version = "php70" ]; then
+if [ $(echo "$php_version" | sed 's/^php//') -ge 70 ]; then
 	php_module="$php7_module"
 	apache_php_lib_path="$apache_php7_lib_path"
 fi
@@ -87,7 +87,7 @@ then
 			do
 				loop_php_module="$php5_module"
 				loop_apache_php_lib_path="$apache_php5_lib_path"
-				if [ $j = "php70" ]; then
+				if [ $(echo "$j" | sed 's/^php//') -ge 70 ]; then
 					loop_php_module="$php7_module"
 					loop_apache_php_lib_path="$apache_php7_lib_path"
 				fi
