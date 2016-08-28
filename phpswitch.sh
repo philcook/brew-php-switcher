@@ -81,7 +81,7 @@ then
 		# Switch apache
 		if [[ $apache_change -eq 1 ]]; then
 			echo "You will need sudo power from now on"
-			echo "Switching your apache conf"
+			echo "Switching your apache conf in '"$apache_conf_path"'"
 
 			for j in ${php_installed_array[@]}
 			do

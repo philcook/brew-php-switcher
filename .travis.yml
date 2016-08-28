@@ -8,3 +8,5 @@ install:
 script:
   - ./.travis/clean.sh
   - ./.travis/test.sh
+  - ./.travis/clean.sh
+  - ./.travis/apache_test.sh
