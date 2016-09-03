@@ -24,8 +24,16 @@ if [ $(echo "$php_version" | sed 's/^php//') -ge 70 ]; then
 fi
 
 apache_change=1
+native_osx_apache=$(which apachectl | grep '/usr/sbin/apachectl' | wc -l)
 apache_conf_path=$(apachectl -V | grep SERVER_CONFIG_FILE | cut -d '"' -f 2)
 apache_php_mod_path="$php_opt_path$php_version$apache_php_lib_path"
+lastLoadModule=$(sed -E -e '/^#?LoadModule php/d' $apache_conf_path | grep -e '^LoadModule ' | tail -1  | sed 's#/#\\\/#g')
+
+if [ $native_osx_apache -eq 1 ]; then
+	php_apache_module=$native_osx_php_apache_module
+else
+	php_apache_module=$lastLoadModule
+fi
 
 # Has the user submitted a version required
 if [[ -z "$1" ]]
@@ -102,7 +110,7 @@ then
 					fi
 				# Else the string for the php module is not in the apache config then add it
 	 			else
-					sudo sed -i.bak "/$native_osx_php_apache_module/a\\
+					sudo sed -i.bak "/$php_apache_module/a\\
 $comment_apache_module_string\\
 " $apache_conf_path
 				fi

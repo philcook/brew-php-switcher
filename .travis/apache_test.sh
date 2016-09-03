@@ -22,10 +22,10 @@ else
     echo -n 'E'
 fi
 
-#mod_php tests with homebrewed apache
-for apache_version in 22 24
+#mod_php tests with homebrewed apache 24
+for apache_version in 24
 do
-    brew link httpd$apache_version
+    brew link httpd$apache_version >/dev/null 2>&1
     SERVER_CONFIG_FILE=$(apachectl -V 2>/dev/null | grep SERVER_CONFIG_FILE | cut -d '"' -f 2)
     . `echo $(dirname $0)"/../phpswitch.sh"` 56 > /dev/null
     if [ "$(grep -e "^LoadModule php" $SERVER_CONFIG_FILE | cut -d' ' -f3)" = $test_php5_module ]; then
@@ -41,7 +41,7 @@ do
         error=1
         echo -n 'E'
     fi
-    brew unlink httpd$apache_version
+    brew unlink httpd$apache_version >/dev/null 2>&1
 done
 
 echo ''
