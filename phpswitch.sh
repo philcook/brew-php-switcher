@@ -18,7 +18,7 @@ native_osx_php_apache_module="LoadModule php5_module libexec\/apache2\/libphp5.s
 
 php_module="$php5_module"
 apache_php_lib_path="$apache_php5_lib_path"
-if [ $(echo "$php_version" | sed 's/^php//') -ge 70 ]; then
+if [[ $(echo "$php_version" | sed 's/^php//') -ge 70 ]]; then
 	php_module="$php7_module"
 	apache_php_lib_path="$apache_php7_lib_path"
 fi
