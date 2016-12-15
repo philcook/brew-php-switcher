@@ -28,7 +28,7 @@ LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp7.so
 Version
 ----
 
-1.5
+1.6
 
 Installation
 --------------
