@@ -19,4 +19,12 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
     brew unlink php71
 
     echo 'Installed all PHP versions.'
+
+    brew tap homebrew/apache
+    brew install httpd22
+    brew unlink httpd22
+    brew install httpd24
+    brew unlink httpd24
+
+    echo 'Installed all Apache httpd versions.'
 fi
