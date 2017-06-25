@@ -4,8 +4,8 @@
 # Twitter: @p_cook
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
-brew_array=("53","54","55","56","70","71")
-php_array=("php53" "php54" "php55" "php56" "php70" "php71")
+brew_array=("53","54","55","56","70","71", "72")
+php_array=("php53" "php54" "php55" "php56" "php70" "php71", "php72")
 php_installed_array=()
 php_version="php$1"
 php_opt_path="$brew_prefix\/opt\/"

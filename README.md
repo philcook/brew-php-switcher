@@ -23,6 +23,7 @@ LoadModule php5_module /usr/local/opt/php55/libexec/apache2/libphp5.so
 LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
 LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
 LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp7.so
+LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp7.so
 ```
 
 Version
@@ -36,7 +37,7 @@ Installation
 brew install brew-php-switcher
 ```
 
-Where **56** exists, please replace with syntax of **53**, **54**, **55**, **56**, **70** or **71** depending on which version is required.
+Where **56** exists, please replace with syntax of **53**, **54**, **55**, **56**, **70**, **71** or **72** depending on which version is required.
 ```sh
 brew-php-switcher 56
 ```
