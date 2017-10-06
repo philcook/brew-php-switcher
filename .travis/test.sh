@@ -1,17 +1,33 @@
 #!/bin/bash
 
-error=0
-for version in 53 54 55 56 70 71
-do
+function switch_cli_only {
     . `echo $(dirname $0)"/../phpswitch.sh"` $version -s > /dev/null
     switched=$(php -v | grep -e '^PHP' | cut -d' ' -f2 | cut -d. -f1,2 | sed 's/\.//')
     if [ $version -ne $switched ];
     then
         error=1
-        echo -n 'E'
+        printf "Error - $version didn't match $switched"
+    else
+        printf "Pass $version matched $switched"
     fi
-    echo -n '.'
+    printf "\n"
+}
+
+function switch_cli_apache {
+    . `echo $(dirname $0)"/../phpswitch.sh"` $version > /dev/null
+}
+
+error=0
+printf "Testing\n"
+for version in 53 54 55 56 70 71
+do
+    #switch_cli_only
+    switch_cli_apache
 done
-echo ''
+
+if [ $error -ne 0 ];
+then
+    printf "Tests have failed\n"
+fi
 
 exit $error

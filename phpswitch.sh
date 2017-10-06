@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # Creator: Phil Cook
 # Email: phil@phil-cook.com
 # Twitter: @p_cook
@@ -24,8 +25,16 @@ if [ $(echo "$php_version" | sed 's/^php//') -ge 70 ]; then
 fi
 
 apache_change=1
-apache_conf_path="/etc/apache2/httpd.conf"
+apache_conf_path=$(apachectl -V | grep SERVER_CONFIG_FILE | cut -d '"' -f 2)
 apache_php_mod_path="$php_opt_path$php_version$apache_php_lib_path"
+apache_location=$(which apachectl)
+apache_sudo=1
+
+if [[ "$EUID" -eq 0 ]]
+then
+    printf "$(tput setaf 1)Don't run as root!! Please run as your own user"
+    exit
+fi
 
 # Has the user submitted a version required
 if [[ -z "$1" ]]
@@ -80,8 +89,20 @@ then
 
 		# Switch apache
 		if [[ $apache_change -eq 1 ]]; then
-			echo "You will need sudo power from now on"
-			echo "Switching your apache conf"
+			if [[ $apache_location == "/usr/sbin/apachectl" ]]; then
+			    apache_sudo=1
+			    printf "We have detected you are using OSX's native apache, as such you will require sudo power from now on\n"
+			elif [[ $apache_location == "/usr/local/bin/apachectl" ]]; then
+                printf "We have detected you are using Homebrew apache, checking if sudo power is required\n"
+                if [[ $(ps -u $(whoami) | grep "httpd" | grep -v "grep") ]]; then
+                    apache_sudo=0
+                    printf "User $(tput setaf 4)$(whoami)$(tput sgr0) is running apache therefore no sudo required\n"
+                else
+                    apache_sudo=1
+                    printf "User $(tput setaf 4)$(whoami)$(tput sgr0) not running apache therefore sudo power is required\n"
+                fi
+			fi
+			printf "Switching your apache conf\n"
 
 			for j in ${php_installed_array[@]}
 			do
@@ -102,9 +123,8 @@ then
 					fi
 				# Else the string for the php module is not in the apache config then add it
 	 			else
-					sudo sed -i.bak "/$native_osx_php_apache_module/a\\
-$comment_apache_module_string\\
-" $apache_conf_path
+					sed 's/\(.*\)foo/\1bar/'
+					sudo sed -i.bak "/\(.*\)LoadModule/a$comment_apache_module_string" $apache_conf_path
 				fi
 			done
 			sudo sed -i.bak "s/\#LoadModule $php_module $apache_php_mod_path/LoadModule $php_module $apache_php_mod_path/g" $apache_conf_path

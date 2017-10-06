@@ -1,18 +1,10 @@
 #!/bin/bash
 
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-    brew install php53
-    brew unlink php53
-    brew install php54
-    brew unlink php54
-    brew install php55
-    brew unlink php55
-    brew install php56
-    brew unlink php56
-    brew install php70
-    brew unlink php70
-    brew install php71
-    brew unlink php71
-
+    for version in 53 54 55 56 70 71;
+    do
+        brew install php$version --with-httpd
+        brew unlink php$version;
+    done
     echo 'Installed all PHP versions.'
 fi
