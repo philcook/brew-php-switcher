@@ -17,6 +17,8 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
     brew unlink php70
     brew install php71
     brew unlink php71
+    brew install php72
+    brew unlink php72
 
     echo 'Installed all PHP versions.'
 fi
