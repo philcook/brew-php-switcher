@@ -23,9 +23,11 @@ apache_php_lib_path="$apache_php5_lib_path"
 # Has the user submitted a version required
 if [[ -z "$1" ]]
 then
-	echo "usage: brew-php-switcher version [-s]"; echo;
+	echo "usage: brew-php-switcher version [-s|-s=*] [-c=*]"; echo;
 	echo "    version    one of:" ${brew_array[@]};
-	echo "    -s         skip change of mod_php on apache"; echo;
+	echo "    -s         skip change of mod_php on apache";
+	echo "    -s=*         skip change of mod_php on apache or valet restart i.e (apache|valet,apache|valet)";
+	echo "    -c=*         switch a specific config (apache|valet,apache|valet"; echo;
 	exit
 fi
 
