@@ -4,6 +4,7 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
     brew tap homebrew/dupes
     brew tap homebrew/versions
     brew tap homebrew/homebrew-php
+    brew tap homebrew/services
     brew update
     brew install php53
     brew unlink php53

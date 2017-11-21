@@ -52,7 +52,6 @@ while [[ ${2:0:1} = '-' ]] ; do
 done
 
 echo "Switching to $php_version ..."
-echo ""
 
 # Install brew services
 brew tap | grep homebrew/services &> /dev/null
@@ -95,14 +94,22 @@ do
     echo "Found installed "$i
     if [[ "$i" == "$php_version" ]]
     then
-        brew services stop $i
+        brew services list | grep $i | grep started &> /dev/null
+        if [ "$?" == 0 ]
+        then
+            brew services stop $i
+        fi
         continue
     fi
 
     if [[ -n $(brew ls --versions $i) ]]
     then
         echo "Unlink "$i"..."
-        brew services stop $i
+        brew services list | grep $i | grep started &> /dev/null
+        if [ "$?" == 0 ]
+        then
+            brew services stop $i
+        fi
         brew unlink $i
     fi
 done
@@ -115,7 +122,12 @@ brew services cleanup
 echo ""
 echo "Link "$i"..."
 brew link "$php_version"
-brew services start "$php_version"
+
+brew services list | grep $php_version &> /dev/null
+if [ "$?" == 0 ];
+then
+    brew services start "$php_version"
+fi
 
 # Switch apache configure
 if [[ $apache_change -eq 1 ]]; then
