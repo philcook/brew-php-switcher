@@ -8,7 +8,7 @@ If you support multiple products/projects that are built using either brand new 
 Caveats
 -------
 
-For users of OSX only who have installed PHP via [Homebrew] and for PHP version 5.3, 5.4, 5.5, 5.6, 7.0, 7.1, and 7.2 only.
+For users of OSX only who have installed PHP via [Homebrew] and for PHP version 5.3, 5.4, 5.5, 5.6, 7.0, 7.1 and 7.2 only.
 
 Your Apache config must have native osx PHP module commented out.
 ```sh
@@ -37,15 +37,40 @@ Installation
 brew install brew-php-switcher
 ```
 
-Where **56** exists, please replace with syntax of **53**, **54**, **55**, **56**, **70** or **71** depending on which version is required.
+Where **56** exists, please replace with syntax of **53**, **54**, **55**, **56**, **70** or **71** or **72** depending on which version is required.
 ```sh
 brew-php-switcher 56
 ```
 
+> by default will switch apache config
+
 Options
 --------------
 
--s Skips apache config switch
+- `-s|-s=*` Skips apache & valet config switch for i.e
+
+```sh
+# skip apache only
+brew-php-switcher 56 -s
+
+# skip valet only
+brew-php-switcher 56 -s=valet
+
+# skip valet & apache
+brew-php-switcher 56 -s=valet,apache
+```
+- `-c=*` switch a specific config for i.e
+
+```sh
+# switch valet config only
+brew-php-switcher 56 -c=valet
+
+# switch valet & apache config only
+brew-php-switcher 56 -c=valet,apache
+
+# switch apache config only
+brew-php-switcher 56 -c=apache
+```
 
 License
 ----
