@@ -105,10 +105,7 @@ then
 		echo "Switching your shell"
 		for i in ${php_installed_array[@]}
 		do
-			if [[ -n $(brew ls --versions $i) ]]
-			then
-				brew unlink $i
-			fi
+			brew unlink $i
 		done
 		brew link "$php_version"
 
