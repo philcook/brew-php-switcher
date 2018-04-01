@@ -4,9 +4,9 @@
 # Twitter: @p_cook
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
-brew_array=("5.6","7.1","7.2")
-php_array=("php@5.6" "php@7.1" "php@7.2")
-valet_support_php_version_array=("php@5.6" "php@7.1" "php@7.2")
+brew_array=("5.6","7.0","7.1","7.2")
+php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2")
+valet_support_php_version_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2")
 php_installed_array=()
 php_version="php@$1"
 php_opt_path="$brew_prefix\/opt\/"
