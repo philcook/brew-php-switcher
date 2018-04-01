@@ -37,9 +37,9 @@ Installation
 brew install brew-php-switcher
 ```
 
-Where **56** exists, please replace with syntax of **53**, **54**, **55**, **56**, **70** or **71** or **72** depending on which version is required.
+Where **5.6** exists, please replace with syntax of **5.6**, **7.0**, **7.1**, or **7.2** depending on which version is required.
 ```sh
-brew-php-switcher 56
+brew-php-switcher 5.6
 ```
 
 > by default will switch apache config
@@ -51,25 +51,25 @@ Options
 
 ```sh
 # skip apache only
-brew-php-switcher 56 -s
+brew-php-switcher 5.6 -s
 
 # skip valet only
-brew-php-switcher 56 -s=valet
+brew-php-switcher 5.6 -s=valet
 
 # skip valet & apache
-brew-php-switcher 56 -s=valet,apache
+brew-php-switcher 5.6 -s=valet,apache
 ```
 - `-c=*` switch a specific config for i.e
 
 ```sh
 # switch valet config only
-brew-php-switcher 56 -c=valet
+brew-php-switcher 5.6 -c=valet
 
 # switch valet & apache config only
-brew-php-switcher 56 -c=valet,apache
+brew-php-switcher 5.6 -c=valet,apache
 
 # switch apache config only
-brew-php-switcher 56 -c=apache
+brew-php-switcher 5.6 -c=apache
 ```
 
 License
