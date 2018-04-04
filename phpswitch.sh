@@ -4,11 +4,11 @@
 # Twitter: @p_cook
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
-brew_array=("53","54","55","56","70","71","72")
-php_array=("php53" "php54" "php55" "php56" "php70" "php71" "php72")
-valet_support_php_version_array=("php56" "php70" "php71" "php72")
+brew_array=("5.6","7.0","7.1","7.2")
+php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2")
+valet_support_php_version_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2")
 php_installed_array=()
-php_version="php$1"
+php_version="php@$1"
 php_opt_path="$brew_prefix\/opt\/"
 
 php5_module="php5_module"
@@ -31,7 +31,7 @@ then
 	exit
 fi
 
-if [ $(echo "$php_version" | sed 's/^php//') -ge 70 ]; then
+if [ $(echo "$php_version" | sed 's/^php@//' | sed 's/\.//') -ge 70 ]; then
 	php_module="$php7_module"
 	apache_php_lib_path="$apache_php7_lib_path"
 fi
@@ -110,7 +110,7 @@ then
 				brew unlink $i
 			fi
 		done
-		brew link "$php_version"
+		brew link --force "$php_version"
 
 		# Switch apache
 		if [[ $apache_change -eq 1 ]]; then
@@ -121,7 +121,7 @@ then
 			do
 				loop_php_module="$php5_module"
 				loop_apache_php_lib_path="$apache_php5_lib_path"
-				if [ $(echo "$j" | sed 's/^php//') -ge 70 ]; then
+				if [ $(echo "$j" | sed 's/^php@//' | sed 's/\.//') -ge 70 ]; then
 					loop_php_module="$php7_module"
 					loop_apache_php_lib_path="$apache_php7_lib_path"
 				fi
@@ -163,3 +163,4 @@ $comment_apache_module_string\\
 else
 	echo "Unknown version of PHP. PHP Switcher can only handle arguments of:" ${brew_array[@]}
 fi
+
