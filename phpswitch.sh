@@ -36,6 +36,7 @@ if [ $(echo "$php_version" | sed 's/^php@//' | sed 's/\.//') -ge 70 ]; then
 	apache_php_lib_path="$apache_php7_lib_path"
 fi
 
+echo $php_version
 apache_change=1
 apache_conf_path="/usr/local/etc/httpd/httpd.conf"
 apache_php_mod_path="$php_opt_path$php_version$apache_php_lib_path"
@@ -120,10 +121,11 @@ then
 				loop_apache_php_lib_path="$apache_php5_lib_path"
 				if [ $(echo "$j" | sed 's/^php@//' | sed 's/\.//') -ge 70 ]; then
 					loop_php_module="$php7_module"
+					# echo "switch to $j"
 					loop_apache_php_lib_path="$apache_php7_lib_path"
 				fi
 				apache_module_string="LoadModule $loop_php_module $php_opt_path$j$loop_apache_php_lib_path"
-				comment_apache_module_string="#$apache_module_string"
+				comment_apache_module_string="\#$apache_module_string"
 
 				# If apache module string within apache conf
 				if grep -q "$apache_module_string" "$apache_conf_path"; then
@@ -133,9 +135,10 @@ then
 					fi
 				# Else the string for the php module is not in the apache config then add it
 	 			else
+				 	echo "add path"
 					sudo sed -i.bak "/$native_osx_php_apache_module/a\\
-$comment_apache_module_string\\
-" $apache_conf_path
+					$comment_apache_module_string\\
+					" $apache_conf_path
 				fi
 			done
 			sudo sed -i.bak "s/\#LoadModule $php_module $apache_php_mod_path/LoadModule $php_module $apache_php_mod_path/g" $apache_conf_path
