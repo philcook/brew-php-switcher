@@ -37,7 +37,7 @@ if [ $(echo "$php_version" | sed 's/^php@//' | sed 's/\.//') -ge 70 ]; then
 fi
 
 apache_change=1
-apache_conf_path="/etc/apache2/httpd.conf"
+apache_conf_path="/usr/local/etc/httpd/httpd.conf"
 apache_php_mod_path="$php_opt_path$php_version$apache_php_lib_path"
 
 valet_restart=0
