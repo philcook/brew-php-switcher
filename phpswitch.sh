@@ -15,7 +15,7 @@ php5_module="php5_module"
 apache_php5_lib_path="\/lib\/httpd\/modules\/libphp5.so"
 php7_module="php7_module"
 apache_php7_lib_path="\/lib\/httpd\/modules\/libphp7.so"
-native_osx_php_apache_module="LoadModule php5_module lib\/httpd\/libphp5.so"
+native_osx_php_apache_module="LoadModule php5_module lib\/httpd\/modules\/libphp5.so"
 
 php_module="$php5_module"
 apache_php_lib_path="$apache_php5_lib_path"
@@ -160,4 +160,3 @@ $comment_apache_module_string\\
 else
 	echo "Unknown version of PHP. PHP Switcher can only handle arguments of:" ${brew_array[@]}
 fi
-
