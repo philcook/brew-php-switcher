@@ -12,9 +12,9 @@ php_version="php@$1"
 php_opt_path="$brew_prefix\/opt\/"
 
 php5_module="php5_module"
-apache_php5_lib_path="\/lib\/httpd\/libphp5.so"
+apache_php5_lib_path="\/lib\/httpd\/modules\/libphp5.so"
 php7_module="php7_module"
-apache_php7_lib_path="\/lib\/httpd\/libphp7.so"
+apache_php7_lib_path="\/lib\/httpd\/modules\/libphp7.so"
 native_osx_php_apache_module="LoadModule php5_module lib\/httpd\/libphp5.so"
 
 php_module="$php5_module"
