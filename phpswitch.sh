@@ -160,4 +160,3 @@ $comment_apache_module_string\\
 else
 	echo "Unknown version of PHP. PHP Switcher can only handle arguments of:" ${brew_array[@]}
 fi
-
