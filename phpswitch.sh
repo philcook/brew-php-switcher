@@ -2,6 +2,11 @@
 # Creator: Phil Cook
 # Email: phil@phil-cook.com
 # Twitter: @p_cook
+osx_major_version=$(sw_vers -productVersion | cut -d. -f1)
+osx_minor_version=$(sw_vers -productVersion | cut -d. -f2)
+osx_patch_version=$(sw_vers -productVersion | cut -d. -f3)
+osx_version=$((${osx_major_version} * 10000 + ${osx_minor_version} * 100 + ${osx_patch_version}))
+
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
 brew_array=("5.6","7.0","7.1","7.2")
@@ -15,7 +20,11 @@ php5_module="php5_module"
 apache_php5_lib_path="\/lib\/httpd\/modules\/libphp5.so"
 php7_module="php7_module"
 apache_php7_lib_path="\/lib\/httpd\/modules\/libphp7.so"
-native_osx_php_apache_module="LoadModule php5_module libexec\/apache2\/libphp5.so"
+
+native_osx_php_apache_module="LoadModule ${php5_module} libexec\/apache2\/libphp5.so"
+if [ ${osx_version} > 101300 ]; then
+    native_osx_php_apache_module="LoadModule ${php7_module} libexec\/apache2\/libphp7.so"
+fi
 
 php_module="$php5_module"
 apache_php_lib_path="$apache_php5_lib_path"
