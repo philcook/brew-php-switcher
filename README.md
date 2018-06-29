@@ -17,19 +17,16 @@ Your Apache config must have native osx PHP module commented out.
 
 Brew PHP Switcher will automatically add the [Homebrew]'s PHP module location in the Apache config in the following format.
 ```sh
-LoadModule php5_module /usr/local/opt/php53/libexec/apache2/libphp5.so
-LoadModule php5_module /usr/local/opt/php54/libexec/apache2/libphp5.so
-LoadModule php5_module /usr/local/opt/php55/libexec/apache2/libphp5.so
-LoadModule php5_module /usr/local/opt/php56/libexec/apache2/libphp5.so
-LoadModule php7_module /usr/local/opt/php70/libexec/apache2/libphp7.so
-LoadModule php7_module /usr/local/opt/php71/libexec/apache2/libphp7.so
-LoadModule php7_module /usr/local/opt/php72/libexec/apache2/libphp7.so
+#LoadModule php5_module /usr/local/opt/php@5.6/lib/httpd/modules/libphp5.so
+#LoadModule php7_module /usr/local/opt/php@7.0/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /usr/local/opt/php@7.1/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /usr/local/opt/php@7.2/lib/httpd/modules/libphp7.so
 ```
 
 Version
 ----
 
-1.7
+2.1
 
 Installation
 --------------
