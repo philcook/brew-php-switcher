@@ -41,7 +41,7 @@ if [[ -z "$1" ]]; then
     exit
 fi
 
-if [ $(echo "$php_version" | sed 's/^php@//' | sed 's/\.//') -ge 70 ]; then
+if [[ $(echo "$php_version" | sed 's/^php@//' | sed 's/\.//') -ge 70 ]]; then
     php_module="$php7_module"
     apache_php_lib_path="$apache_php7_lib_path"
 fi
