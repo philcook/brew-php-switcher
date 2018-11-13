@@ -1,6 +1,5 @@
 #!/bin/bash
 
-for version in 53 54 55 56 70 71;
-do
-    brew unlink php$version;
+for version in '5.6' '7.0' '7.1' '7.2'; do
+    brew unlink php@$version
 done

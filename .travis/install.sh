@@ -2,21 +2,16 @@
 
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
     brew tap homebrew/dupes
-    brew tap homebrew/versions
-    brew tap homebrew/homebrew-php
     brew update
-    brew install php53
-    brew unlink php53
-    brew install php54
-    brew unlink php54
-    brew install php55
-    brew unlink php55
-    brew install php56
-    brew unlink php56
-    brew install php70
-    brew unlink php70
-    brew install php71
-    brew unlink php71
+    brew install php@5.6
+    brew unlink php@5.6
+    brew install php@7.0
+    brew unlink php@7.0
+    brew install php@7.1
+    brew unlink php@7.1
+    brew install php@7.2
+    brew link --overwrite php@7.2
+    brew unlink php@7.2
 
     echo 'Installed all PHP versions.'
 fi
