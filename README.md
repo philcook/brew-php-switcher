@@ -8,7 +8,7 @@ If you support multiple products/projects that are built using either brand new 
 Caveats
 -------
 
-For users of OSX only who have installed PHP via [Homebrew] and for PHP version 5.6, 7.0, 7.1 and 7.2 only.
+For users of OSX only who have installed PHP via [Homebrew] and for PHP version 5.6, 7.0, 7.1, 7.2 and 7.3 only.
 
 Your Apache config must have native osx PHP module commented out.
 ```sh
@@ -21,6 +21,7 @@ Brew PHP Switcher will automatically add the [Homebrew]'s PHP module location in
 #LoadModule php7_module /usr/local/opt/php@7.0/lib/httpd/modules/libphp7.so
 #LoadModule php7_module /usr/local/opt/php@7.1/lib/httpd/modules/libphp7.so
 #LoadModule php7_module /usr/local/opt/php@7.2/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /usr/local/opt/php@7.3/lib/httpd/modules/libphp7.so
 ```
 
 Version
@@ -34,7 +35,7 @@ Installation
 brew install brew-php-switcher
 ```
 
-Where **5.6** exists, please replace with syntax of **5.6**, **7.0**, **7.1**, or **7.2** depending on which version is required.
+Where **5.6** exists, please replace with syntax of **5.6**, **7.0**, **7.1**, **7.2**, or **7.3** depending on which version is required.
 ```sh
 brew-php-switcher 5.6
 ```

@@ -10,8 +10,10 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
     brew install php@7.1
     brew unlink php@7.1
     brew install php@7.2
-    brew link --overwrite php@7.2
     brew unlink php@7.2
+    brew install php@7.3
+    brew link --overwrite php@7.3
+    brew unlink php@7.3
 
     echo 'Installed all PHP versions.'
 fi
