@@ -5,6 +5,11 @@
 osx_major_version=$(sw_vers -productVersion | cut -d. -f1)
 osx_minor_version=$(sw_vers -productVersion | cut -d. -f2)
 osx_patch_version=$(sw_vers -productVersion | cut -d. -f3)
+# Ensure patch version exists
+# Apple doesn't supply patch version when '0'
+if ! [[ osx_patch_version =~ '^[0-9]+$' ]]; then
+    osx_patch_version=0
+fi
 osx_version=$((${osx_major_version} * 10000 + ${osx_minor_version} * 100 + ${osx_patch_version}))
 
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
