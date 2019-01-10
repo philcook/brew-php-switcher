@@ -5,7 +5,6 @@ osx_image: xcode9.4
 addons:
   homebrew:
     packages:
-      - php@5.6
       - php@7.1
       - php@7.2
       - php@7.3
