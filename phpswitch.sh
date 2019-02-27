@@ -22,7 +22,7 @@ php7_module="php7_module"
 apache_php7_lib_path="\/lib\/httpd\/modules\/libphp7.so"
 
 native_osx_php_apache_module="LoadModule ${php5_module} libexec\/apache2\/libphp5.so"
-if [ ${osx_version} > 101300 ]; then
+if [ "${osx_version}" -ge "101300" ]; then
     native_osx_php_apache_module="LoadModule ${php7_module} libexec\/apache2\/libphp7.so"
 fi
 
