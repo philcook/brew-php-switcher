@@ -22,6 +22,7 @@ Brew PHP Switcher will automatically add the [Homebrew]'s PHP module location in
 #LoadModule php7_module /usr/local/opt/php@7.1/lib/httpd/modules/libphp7.so
 #LoadModule php7_module /usr/local/opt/php@7.2/lib/httpd/modules/libphp7.so
 #LoadModule php7_module /usr/local/opt/php@7.3/lib/httpd/modules/libphp7.so
+#LoadModule php7_module /usr/local/opt/php@7.4/lib/httpd/modules/libphp7.so
 ```
 
 Version
