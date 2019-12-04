@@ -9,9 +9,9 @@ osx_version=$((${osx_major_version} * 10000 + ${osx_minor_version} * 100 + ${osx
 
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
-brew_array=("5.6","7.0","7.1","7.2","7.3")
-php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3")
-valet_support_php_version_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3")
+brew_array=("5.6","7.0","7.1","7.2","7.3","7.4")
+php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4")
+valet_support_php_version_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4")
 php_installed_array=()
 php_version="php@$1"
 php_opt_path="$brew_prefix\/opt\/"
