@@ -29,7 +29,7 @@ Brew PHP Switcher will automatically add the [Homebrew]'s PHP module location in
 Version
 ----
 
-2.2
+2.3
 
 Installation
 --------------
