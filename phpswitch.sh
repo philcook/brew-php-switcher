@@ -106,12 +106,6 @@ if [[ " ${php_array[*]} " == *"$php_version"* ]]; then
     # Check that the requested version is installed
     if [[ " ${php_installed_array[*]} " == *"$php_version"* ]]; then
 
-        # Stop valet service
-        if [[ ($valet_installed -eq 1) && ($valet_restart -eq 1) ]]; then
-            echo "Stop Valet service"
-            valet stop
-        fi
-
         # Switch Shell
         echo "Switching to $php_version"
         echo "Switching your shell"
@@ -158,9 +152,9 @@ $comment_apache_module_string\\
 
         # Switch valet
         if [[ $valet_restart -eq 1 ]]; then
-            if [[ valet_installed -eq 1 ]]; then
-                valet restart
-             else
+            if [[ $valet_installed -eq 1 ]]; then
+                valet use $php_version --force
+            else
                echo "valet doesn't installed in your system, will skip restarting valet service"
             fi
         fi
