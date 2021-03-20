@@ -31,6 +31,7 @@ jobs:
           set -xe
 
           brew --version
+          brew install php@${{ matrix.php-version }}
           ./phpswitch.sh ${{ matrix.php-version }} -s
           switched=$(php -v | grep -e '^PHP' | cut -d' ' -f2 | cut -d. -f1,2)
           if [ "${{ matrix.php-version }}" != "$switched" ]; then
