@@ -115,7 +115,7 @@ if [[ " ${php_array[*]} " == *"$php_version"* ]]; then
     # Switch Shell
     echo "Switching to $php_version"
     echo "Switching your shell"
-    for i in ${php_installed_array[@]}; do
+    for i in ${php_installed_array[*]}; do
       brew unlink $i
     done
     brew link --force "$php_version"
@@ -125,7 +125,7 @@ if [[ " ${php_array[*]} " == *"$php_version"* ]]; then
       echo "You will need sudo power from now on"
       echo "Switching your apache conf"
 
-      for j in ${php_installed_array[@]}; do
+      for j in ${php_installed_array[*]}; do
         loop_php_module="$php5_module"
         loop_apache_php_lib_path="$apache_php5_lib_path"
         if [ $(echo "$j" | sed 's/^php@//' | sed 's/\.//') -ge 80 ]; then
@@ -170,5 +170,5 @@ $comment_apache_module_string\\
     echo "Sorry, but $php_version is not installed via brew. Install by running: brew install $php_version"
   fi
 else
-  echo "Unknown version of PHP. PHP Switcher can only handle arguments of:" ${brew_array[@]}
+  echo "Unknown version of PHP. PHP Switcher can only handle arguments of: ${brew_array[*]}"
 fi
