@@ -8,7 +8,10 @@ jobs:
   tests:
     runs-on: 'macos-latest'
 
+    continue-on-error: true
+
     strategy:
+      fail-fast: true
       matrix:
         php-version:
           - '5.6'
