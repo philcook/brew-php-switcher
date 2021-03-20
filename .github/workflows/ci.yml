@@ -28,7 +28,7 @@ jobs:
           set -xe
 
           brew --version
-          ./phpswitch.sh ${{ matrix.php-version }} -s >/dev/null
+          ./phpswitch.sh ${{ matrix.php-version }} -s
           switched=$(php -v | grep -e '^PHP' | cut -d' ' -f2 | cut -d. -f1,2)
           if [ "${{ matrix.php-version }}" != "$switched" ]; then
             echo "Expected ${{ matrix.php-version }} got $switched"
