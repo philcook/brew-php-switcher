@@ -9,9 +9,9 @@ osx_version=$((${osx_major_version} * 10000 + ${osx_minor_version} * 100 + ${osx
 
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
-brew_array=("5.6","7.0","7.1","7.2","7.3","7.4","8.0")
-php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4" "php@8.0")
-valet_support_php_version_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4" "php@8.0")
+brew_array=("5.6" "7.0" "7.1" "7.2" "7.3" "7.4" "8.0" "8.1")
+php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4" "php@8.0" "php@8.1")
+valet_support_php_version_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4" "php@8.0" "php@8.1")
 php_installed_array=()
 php_version="php@$1"
 php_opt_path="$brew_prefix\/opt\/"
@@ -156,7 +156,7 @@ $comment_apache_module_string\\
             if [[ $valet_installed -eq 1 ]]; then
                 valet use $php_version --force
             else
-               echo "valet doesn't installed in your system, will skip restarting valet service"
+               echo "valet isn't installed in your system, will skip restarting valet service"
             fi
         fi
 
