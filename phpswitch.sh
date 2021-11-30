@@ -20,8 +20,8 @@ php5_module="php5_module"
 apache_php5_lib_path="\/lib\/httpd\/modules\/libphp5.so"
 php7_module="php7_module"
 apache_php7_lib_path="\/lib\/httpd\/modules\/libphp7.so"
-php8_module="php8_module"
-apache_php8_lib_path="\/lib\/httpd\/modules\/libphp8.so"
+php8_module="php_module"
+apache_php8_lib_path="\/lib\/httpd\/modules\/libphp.so"
 
 native_osx_php_apache_module="LoadModule ${php5_module} libexec\/apache2\/libphp5.so"
 if [ "${osx_version}" -ge "101300" ]; then
