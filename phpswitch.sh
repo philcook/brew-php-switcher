@@ -35,12 +35,12 @@ apache_php_lib_path="$apache_php5_lib_path"
 if [[ -z "$1" ]]; then
     echo "usage: brew-php-switcher version [-s|-s=*] [-c=*]"
     echo
-    echo "    version one of:" ${brew_array[@]}
+    echo "    version    one of:" ${brew_array[@]}
     echo "    -s         skip change of mod_php on apache"
     echo "    -s=*       skip change of mod_php on apache or valet restart i.e (apache|valet,apache|valet)"
     echo "    -c=*       switch a specific config (apache|valet,apache|valet"
     echo
-  exit
+    exit
 fi
 
 if [[ $(echo "$php_version" | sed 's/^php@//' | sed 's/\.//') -ge 80 ]]; then
