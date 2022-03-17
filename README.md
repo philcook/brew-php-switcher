@@ -1,4 +1,4 @@
-Brew PHP Switcher
+Brew PHP Switcher [![CI](https://github.com/philcook/brew-php-switcher/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/philcook/brew-php-switcher/actions/workflows/ci.yml)
 =========
 
 Brew PHP switcher is a simple script to switch your Apache and CLI configs quickly between major versions of PHP.
