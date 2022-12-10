@@ -1,21 +1,21 @@
-Brew PHP Switcher [![CI](https://github.com/philcook/brew-php-switcher/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/philcook/brew-php-switcher/actions/workflows/ci.yml)
-=========
+# Brew PHP Switcher [![CI](https://github.com/philcook/brew-php-switcher/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/philcook/brew-php-switcher/actions/workflows/ci.yml)
 
 Brew PHP switcher is a simple script to switch your Apache and CLI configs quickly between major versions of PHP.
 
 If you support multiple products/projects that are built using either brand new or old legacy PHP functionality and you find it a pain to change config files continually this will make the whole process just one command.
 
-Caveats
--------
+## Caveats
 
-For users of OSX only who have installed PHP via [Homebrew] and for PHP version 5.6, 7.0, 7.1, 7.2, 7.3, 7.4 and 8.0 only.
+For users of OSX only who have installed PHP via [Homebrew] and for PHP version 5.6, 7.0, 7.1, 7.2, 7.3, 7.4, 8.0, 8.1, 8.2, 8.3, and 8.4 only.
 
 Your Apache config must have native osx PHP module commented out.
+
 ```sh
 #LoadModule php5_module libexec/apache2/libphp5.so
 ```
 
 Brew PHP Switcher will automatically add the [Homebrew]'s PHP module location in the Apache config in the following format.
+
 ```sh
 #LoadModule php5_module /usr/local/opt/php@5.6/lib/httpd/modules/libphp5.so
 #LoadModule php7_module /usr/local/opt/php@7.0/lib/httpd/modules/libphp7.so
@@ -23,29 +23,32 @@ Brew PHP Switcher will automatically add the [Homebrew]'s PHP module location in
 #LoadModule php7_module /usr/local/opt/php@7.2/lib/httpd/modules/libphp7.so
 #LoadModule php7_module /usr/local/opt/php@7.3/lib/httpd/modules/libphp7.so
 #LoadModule php7_module /usr/local/opt/php@7.4/lib/httpd/modules/libphp7.so
-#LoadModule php7_module /usr/local/opt/php@8.0/lib/httpd/modules/libphp8.so
+#LoadModule php_module /usr/local/opt/php@8.0/lib/httpd/modules/libphp8.so
+#LoadModule php_module /usr/local/opt/php@8.1/lib/httpd/modules/libphp8.so
+#LoadModule php_module /usr/local/opt/php@8.2/lib/httpd/modules/libphp8.so
+#LoadModule php_module /usr/local/opt/php@8.3/lib/httpd/modules/libphp8.so
+#LoadModule php_module /usr/local/opt/php@8.4/lib/httpd/modules/libphp8.so
 ```
 
-Version
-----
+## Version
 
-2.3
+2.5
 
-Installation
---------------
+## Installation
+
 ```sh
 brew install brew-php-switcher
 ```
 
-Where **5.6** exists, please replace with syntax of **5.6**, **7.0**, **7.1**, **7.2**, **7.3**, **7.4**, **8.0**, **8.1**, **8.2**, **8.3** or **8.4** depending on which version is required.
+Where **5.6** exists, please replace with syntax of **5.6**, **7.0**, **7.1**, **7.2**, **7.3**, **7.4**, **8.0**, **8.1**, **8.2**, **8.3**, or **8.4** depending on which version is required.
+
 ```sh
 brew-php-switcher 5.6
 ```
 
 > by default will switch apache config
 
-Options
---------------
+## Options
 
 - `-s|-s=*` Skips apache & valet config switch for i.e
 
@@ -72,8 +75,7 @@ brew-php-switcher 5.6 -c=valet,apache
 brew-php-switcher 5.6 -c=apache
 ```
 
-License
-----
+## License
 
 MIT
 
