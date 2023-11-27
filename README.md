@@ -37,7 +37,7 @@ Installation
 brew install brew-php-switcher
 ```
 
-Where **5.6** exists, please replace with syntax of **5.6**, **7.0**, **7.1**, **7.2**, **7.3**, **7.4** or **8.0** depending on which version is required.
+Where **5.6** exists, please replace with syntax of **5.6**, **7.0**, **7.1**, **7.2**, **7.3**, **7.4**, **8.0**, **8.1**, **8.2** or **8.3** depending on which version is required.
 ```sh
 brew-php-switcher 5.6
 ```
