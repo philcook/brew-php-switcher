@@ -21,16 +21,27 @@ jobs:
           - '7.3'
           - '7.4'
           - '8.0'
+          - '8.1'
+          - '8.2'
+          - '8.3'
+          - '8.4'
 
     steps:
       - name: "Checkout code"
-        uses: actions/checkout@v2.3.3
+        uses: actions/checkout@v4
 
       - run: |
           set -xe
 
+          # Related issue: https://github.com/actions/setup-python/issues/577
+          # Unlink and re-link to prevent errors when GitHub macOS runner images install Node outside of brew.
+          brew list -1 | grep node | while read formula; do brew unlink $formula; brew link --overwrite $formula; done
+          # Unlink and re-link to prevent errors when GitHub macOS runner images install Python outside of brew.
+          brew list -1 | grep python | while read formula; do brew unlink $formula; brew link --overwrite $formula; done
+
           brew --version
           brew tap shivammathur/php
+          brew update
           brew install shivammathur/php/php@${{ matrix.php-version }}
           ./phpswitch.sh ${{ matrix.php-version }} -s
           switched=$(php -v | grep -e '^PHP' | cut -d' ' -f2 | cut -d. -f1,2)
