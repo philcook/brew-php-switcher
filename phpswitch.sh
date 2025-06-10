@@ -9,7 +9,7 @@ osx_version=$((${osx_major_version} * 10000 + ${osx_minor_version} * 100 + ${osx
 
 brew_prefix=$(brew --prefix | sed 's#/#\\\/#g')
 
-brew_array=("5.6" "7.0" "7.1" "7.2" "7.3" "7.4" "8.0" "8.1" "8.2", "8.3", "8.4")
+brew_array=("5.6" "7.0" "7.1" "7.2" "7.3" "7.4" "8.0" "8.1" "8.2" "8.3" "8.4")
 php_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4" "php@8.0" "php@8.1" "php@8.2" "php@8.3" "php@8.4")
 valet_support_php_version_array=("php@5.6" "php@7.0" "php@7.1" "php@7.2" "php@7.3" "php@7.4" "php@8.0" "php@8.1" "php@8.2" "php@8.3" "php@8.4")
 php_installed_array=()
@@ -52,7 +52,10 @@ elif [[ $(echo "$php_version" | sed 's/^php@//' | sed 's/\.//') -ge 70 ]]; then
 fi
 
 apache_change=1
+# Default Apache httpd folder
 apache_conf_path="/etc/apache2/httpd.conf"
+# Apache httpd folder, if apache is installed via Home Brew (new Apple Silicon)
+# apache_conf_path="/opt/homebrew/etc/httpd/httpd.conf"
 apache_php_mod_path="$php_opt_path$php_version$apache_php_lib_path"
 
 valet_restart=0
