@@ -54,7 +54,7 @@ fi
 apache_change=1
 # Default Apache httpd folder
 apache_conf_path="/etc/apache2/httpd.conf"
-# Apache httpd folder, if apache is installed via Home Brew (new Apple Silicon)
+# Apache httpd folder, if Apache is installed via Homebrew (new Apple Silicon)
 # apache_conf_path="/opt/homebrew/etc/httpd/httpd.conf"
 apache_php_mod_path="$php_opt_path$php_version$apache_php_lib_path"
 
