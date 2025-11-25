@@ -39,7 +39,7 @@ jobs:
             ~/Library/Caches/Homebrew
             /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
             /usr/local/Homebrew/Library/Taps/shivammathur/php
-          key: ${{ runner.os }}-brew-${{ hashFiles('**/Brewfile') }} # Or use a different key strategy
+          key: ${{ runner.os }}-brew-${{ matrix.php-version }} # Or use a different key strategy
           restore-keys: |
             ${{ runner.os }}-brew-
 
