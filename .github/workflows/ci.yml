@@ -34,6 +34,8 @@ jobs:
       - run: |
           set -xe
 
+          brew update
+          brew upgrade --greedy --force
           brew --version
           brew tap shivammathur/php
           brew install shivammathur/php/php@${{ matrix.php-version }}
