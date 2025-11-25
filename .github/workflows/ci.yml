@@ -40,8 +40,12 @@ jobs:
           brew tap shivammathur/php
           brew install shivammathur/php/php@${{ matrix.php-version }}
           ./phpswitch.sh ${{ matrix.php-version }} -s
+          if [ $@ != 0 ]; then
+            echo "Expected PHP version ${{ matrix.php-version}} failed to switch."
+            exit 0
+          fi
           switched=$(php -v | grep -e '^PHP' | cut -d' ' -f2 | cut -d. -f1,2)
           if [ "${{ matrix.php-version }}" != "$switched" ]; then
-            echo "Expected ${{ matrix.php-version }} got $switched"
+            echo "Expected PHP version ${{ matrix.php-version }} successfully switched."
             exit 1
           fi
