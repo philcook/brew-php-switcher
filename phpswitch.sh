@@ -40,7 +40,7 @@ if [[ -z "$1" ]]; then
     echo "    -s=*       skip change of mod_php on apache or valet restart i.e (apache|valet,apache|valet)"
     echo "    -c=*       switch a specific config (apache|valet,apache|valet"
     echo
-    exit
+    exit 1
 fi
 
 if [[ $(echo "$php_version" | sed 's/^php@//' | sed 's/\.//') -ge 80 ]]; then
@@ -101,7 +101,7 @@ done
 # Check if php version support via valet
 if [[ (" ${valet_support_php_version_array[*]} " != *"$php_version"*) && ($valet_restart -eq 1) ]]; then
     echo "Sorry, but $php_version is not support via valet"
-    exit
+    exit 1
 fi
 
 # Check that the requested version is supported
@@ -166,7 +166,9 @@ $comment_apache_module_string\\
         echo "All done!"
     else
         echo "Sorry, but $php_version is not installed via brew. Install by running: brew install $php_version"
+        exit 1
     fi
 else
     echo "Unknown version of PHP. PHP Switcher can only handle arguments of:" ${brew_array[@]}
+    exit 1
 fi

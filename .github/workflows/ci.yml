@@ -21,20 +21,55 @@ jobs:
           - '7.3'
           - '7.4'
           - '8.0'
+          - '8.1'
+          - '8.2'
+          - '8.3'
+          - '8.4'
+          - '8.5'
 
     steps:
-      - name: "Checkout code"
-        uses: actions/checkout@v2.3.3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - run: |
-          set -xe
+      - name: Cache Homebrew
+        uses: actions/cache@v4 # Use the latest version of actions/cache
+        id: brew-cache
+        with:
+          path: |
+            ~/Library/Caches/Homebrew
+            /usr/local/Homebrew/Library/Taps/homebrew/homebrew-core
+            /usr/local/Homebrew/Library/Taps/shivammathur/php
+          key: ${{ runner.os }}-brew-${{ matrix.php-version }} # Or use a different key strategy
+          restore-keys: |
+            ${{ runner.os }}-brew-
 
+      - name: Update Homebrew
+        # The cache is restored automatically if a match is found
+        run: |
+          brew update # Update Homebrew's understanding of available packages
+          brew upgrade # Upgrade all installed packages
+          brew cleanup # Remove old versions and a growing cache
+      
+      - name: Install PHP
+        run: |
           brew --version
           brew tap shivammathur/php
           brew install shivammathur/php/php@${{ matrix.php-version }}
+      
+      - name: Confirm PHP version switch
+        run: |
+          set -xe
+
           ./phpswitch.sh ${{ matrix.php-version }} -s
+
+          if [ "$?" != 0 ]; then
+            echo "Expected PHP version ${{ matrix.php-version}} failed to switch."
+            exit 0
+          fi
+
           switched=$(php -v | grep -e '^PHP' | cut -d' ' -f2 | cut -d. -f1,2)
+
           if [ "${{ matrix.php-version }}" != "$switched" ]; then
-            echo "Expected ${{ matrix.php-version }} got $switched"
+            echo "Expected PHP version ${{ matrix.php-version }} successfully switched."
             exit 1
           fi
